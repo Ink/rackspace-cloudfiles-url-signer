@@ -1,0 +1,32 @@
+{
+  "name": "rackspace-cloudfiles-url-signer",
+  "version": "0.0.1",
+  "description": "Module to sign urls to allow access to the private blobs in rackspace cloud files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ink/rackspace-cloudfiles-url-signer"
+  },
+  "keywords": [
+    "rackspace",
+    "cloudfiles",
+    "url",
+    "signing"
+  ],
+  "author": {
+    "name": "Brett van Zuiden (Ink)"
+  },
+  "dependencies": {
+      "request": "~2.27.0",
+      "underscore": "~1.5.2"
+  },
+  "license": "BSD",
+  "readme": "##Rackspace Cloudfiles url signer\n\nModule to sign urls to allow access to the private blobs in rackspace cloud files\n\n###To install\n\n    npm install rackspace-cloudfiles-url-signer\n\n###Use example\n\n    var sig= require('rackspace-cloudfiles-url-signer');\n\n    var account1 = sig.urlSigner('myusername', 'apikey');\n    var account2 = sig.urlSigner('myotherusername', 'apikey2');\n    \n    var url1 = account1.getUrl('GET', 'mycontainer', 'somefile.png', 10); //url expires in 10 minutes\n    var url2 = account2.getUrl('PUT', 'mycontaineronotheraccount', '/somedir/somefile.png', 1); //url expires in 1 minute\n\n    //Works with containers too!\n    var url2 = account1.getUrl('GET', 'mycontainer', null, 10);\n\n###Usage Notes\n\n* Rackspace relies on using a TempURL key that is attached to the metadata of your account. If you don't already have a TempKey set up, the\nlibrary will generate (and save) one for you\n* The source code is reasonably short and resonably commented, so read it if you have questions\n\n###Credits\n\nInspired by and derived from [amazon-s3-url-signer](https://github.com/dyashkir/amazon-s3-url-signer).\n\n###License\n\nBSD, because that's what amazon-s3-url-signer is.",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Ink/rackspace-cloudfiles-url-signer/issues"
+  }
+}
